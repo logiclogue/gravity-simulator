@@ -1,11 +1,52 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
+#include <GL/glu.h>
 #include <stdio.h>
+
+
+typedef int bool;
+enum {
+    false, true
+};
+
+bool initGL(void)
+{
+    GLenum error = GL_NO_ERROR;
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glClearColor(0.f, 0.f, 0.f, 1.f);
+
+    error = glGetError();
+
+    if (error != GL_NO_ERROR) {
+        printf("Error initialising OpenGL! %s\n", gluErrorString(error));
+
+        return false;
+    }
+    
+    return true;
+}
+
+void render(void)
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    glBegin(GL_QUADS);
+        glVertex2f(-0.5f, -0.5f);
+        glVertex2f(0.5f, -0.5f);
+        glVertex2f(0.5f, 0.5f);
+        glVertex2f(-0.5f, 0.5f);
+    glEnd();
+}
 
 int main(void)
 {
     SDL_Window *window;
     SDL_Renderer *renderer;
+    SDL_GLContext context;
     SDL_Rect rect = {
         0, 0, 100, 100
     };
@@ -34,17 +75,33 @@ int main(void)
         return 1;
     }
 
-    int i;
+    context = SDL_GL_CreateContext(window);
 
-    for (i = 0; i < 10000; i++) {
-        rect.x = i / 100;
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-        SDL_RenderClear(renderer);
-        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-        SDL_RenderFillRect(renderer, &rect);
-        SDL_RenderPresent(renderer);
+    if (context == NULL) {
+        printf("OpenGL context could not be created! SDL Error: %s\n", SDL_GetError());
+
+        return 1;
     }
+
+    if (SDL_GL_SetSwapInterval(1) < 0) {
+        printf("Warning: Unable to set VSync! SDL Error: %s\n", SDL_GetError());
+
+        return 1;
+    }
+
+    if (!initGL()) {
+        printf("Unable to initialise OpenGL!\n");
+    }
+
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+    SDL_RenderClear(renderer);
+    //SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    //SDL_RenderFillRect(renderer, &rect);
+    render();
+    SDL_RenderPresent(renderer);
+
     
+    SDL_Delay(1000);
     SDL_DestroyWindow(window);
     SDL_Quit();
 
