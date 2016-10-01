@@ -7,18 +7,21 @@
 typedef struct DrawerTag {
     int width;
     int height;
+    int is_exit;
     SDL_Window *window;
     SDL_GLContext *context;
+    SDL_Event *event;
 } Drawer;
 
 
 Drawer *Drawer_main(void);
 void Drawer_quit(Drawer *);
-void Drawer_draw(Drawer *self);
+void Drawer_draw(Drawer *);
 void Drawer_triangle(
     float ax, float ay,
     float bx, float by,
     float cx, float cy);
 void Drawer_clear(void);
+void Drawer_event_loop(Drawer *);
 
 #endif

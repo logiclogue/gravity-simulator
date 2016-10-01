@@ -14,6 +14,8 @@ Drawer *Drawer_main(void)
 
     self->width = 640;
     self->height = 480;
+    self->is_exit = 0;
+    self->event = malloc(sizeof(SDL_Event));
 
     initSDL(self);
     initGL();
@@ -48,6 +50,23 @@ void Drawer_triangle(
 void Drawer_clear(void)
 {
     glClear(GL_COLOR_BUFFER_BIT);
+}
+
+void Drawer_event_loop(Drawer *self)
+{
+    SDL_PollEvent(self->event);
+
+    switch (self->event->window.event) {
+    case SDL_WINDOWEVENT_CLOSE:
+        self->is_exit = 1;
+
+        Drawer_quit(self);
+
+        break;
+
+    default:
+        break;
+    }
 }
 
 
