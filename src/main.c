@@ -10,17 +10,13 @@ int main(void)
 
     float x;
 
-    while (1) {
+    while (!drawer->is_exit) {
         draw(x);
         Drawer_draw(drawer);
         Drawer_clear();
         Drawer_event_loop(drawer);
 
         x += 0.01;
-
-        if (drawer->is_exit) {
-            break;
-        }
     }
 
     return 0;
