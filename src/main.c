@@ -1,5 +1,4 @@
 #include "Drawer.h"
-#include <GL/glu.h>
 
 
 static void draw(float x);
@@ -14,6 +13,7 @@ int main(void)
     for (x = 0; x < 2; x += 0.01) {
         draw(x);
         Drawer_draw(drawer);
+        Drawer_clear();
     }
 
     Drawer_quit(drawer);

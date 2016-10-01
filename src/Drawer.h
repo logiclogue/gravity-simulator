@@ -19,5 +19,6 @@ void Drawer_triangle(
     float ax, float ay,
     float bx, float by,
     float cx, float cy);
+void Drawer_clear(void);
 
 #endif
