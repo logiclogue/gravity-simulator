@@ -8,6 +8,7 @@ typedef struct DrawerTag {
     int width;
     int height;
     int is_exit;
+    char *title;
     SDL_Window *window;
     SDL_GLContext *context;
     SDL_Event *event;

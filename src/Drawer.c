@@ -15,6 +15,7 @@ Drawer *Drawer_main(void)
     self->width = 640;
     self->height = 480;
     self->is_exit = 0;
+    self->title = "Gravity Simulator";
     self->event = malloc(sizeof(SDL_Event));
 
     initSDL(self);
@@ -82,7 +83,7 @@ static int initSDL(Drawer *self)
     }
 
     self->window = SDL_CreateWindow(
-        "Hello World",
+        self->title,
         SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
         self->width, self->height,
         SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN
