@@ -5,7 +5,8 @@
 
 
 static int initGL(void);
-static int initSDL(Drawer *self);
+static int initSDL(Drawer *);
+static void resize(Drawer *, int, int);
 
 
 Drawer *Drawer_main(void)
@@ -62,6 +63,11 @@ void Drawer_event_loop(Drawer *self)
         self->is_exit = 1;
 
         Drawer_quit(self);
+
+        break;
+
+    case SDL_WINDOWEVENT_RESIZED:
+        resize(self, self->event->window.data1, self->event->window.data2);
 
         break;
 
@@ -135,4 +141,12 @@ static int initGL(void)
     }
     
     return 1;
+}
+
+static void resize(Drawer *self, int width, int height)
+{
+    self->width = width;
+    self->height = height;
+
+    glViewport(0, 0, width, height);
 }
