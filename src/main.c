@@ -34,11 +34,17 @@ void render(void)
 {
     glClear(GL_COLOR_BUFFER_BIT);
 
+    glBegin(GL_TRIANGLES);
+        glVertex2f(0.f, 1.f);
+        glVertex2f(-1.f, -1.f);
+        glVertex2f(1.f, -1.f);
+    glEnd();
+
     glBegin(GL_QUADS);
-        glVertex2f(-0.5f, -0.5f);
-        glVertex2f(0.5f, -0.5f);
-        glVertex2f(0.5f, 0.5f);
-        glVertex2f(-0.5f, 0.5f);
+        glVertex2f(-0.9f, 0.9f);
+        glVertex2f(-0.9f, 0.8f);
+        glVertex2f(-0.8f, 0.8f);
+        glVertex2f(-0.8f, 0.9f);
     glEnd();
 }
 
@@ -93,12 +99,13 @@ int main(void)
         printf("Unable to initialise OpenGL!\n");
     }
 
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-    SDL_RenderClear(renderer);
+    //SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+    //SDL_RenderClear(renderer);
     //SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     //SDL_RenderFillRect(renderer, &rect);
     render();
-    SDL_RenderPresent(renderer);
+    //SDL_RenderPresent(renderer);
+    SDL_GL_SwapWindow(window);
 
     
     SDL_Delay(1000);
