@@ -18,10 +18,6 @@ typedef struct DrawerTag {
 Drawer *Drawer_main(void);
 void Drawer_quit(Drawer *);
 void Drawer_draw(Drawer *);
-void Drawer_triangle(
-    float ax, float ay,
-    float bx, float by,
-    float cx, float cy);
 void Drawer_clear(void);
 void Drawer_event_loop(Drawer *);
 

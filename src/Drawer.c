@@ -37,18 +37,6 @@ void Drawer_draw(Drawer *self)
     SDL_GL_SwapWindow(self->window);
 }
 
-void Drawer_triangle(
-    float ax, float ay,
-    float bx, float by,
-    float cx, float cy)
-{
-    glBegin(GL_TRIANGLES);
-        glVertex2f(ax, ay);
-        glVertex2f(bx, by);
-        glVertex2f(cx, cy);
-    glEnd();
-}
-
 void Drawer_clear(void)
 {
     glClear(GL_COLOR_BUFFER_BIT);
