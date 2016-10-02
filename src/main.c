@@ -1,13 +1,10 @@
 #include <GL/glu.h>
 #include "Frame.h"
 #include "Camera.h"
+#include "Drawer.h"
 
 
-static void draw(Frame *frame, float x);
-static void draw_triangle(Frame *frame,
-    float ax, float ay,
-    float bx, float by,
-    float cx, float cy);
+static void draw(Drawer *drawer, float x);
 static void clear(void);
 
 
@@ -15,11 +12,12 @@ int main(void)
 {
     Camera *camera = Camera_main();
     Frame *frame = Frame_main(camera);
+    Drawer *drawer = Drawer_main(camera, frame);
 
     float x = 0;
 
     while (!frame->is_exit) {
-        draw(frame, x);
+        draw(drawer, x);
         Frame_draw(frame);
         clear();
         Frame_event_loop(frame);
@@ -31,33 +29,18 @@ int main(void)
 }
 
 
-static void draw(Frame *frame, float x)
+static void draw(Drawer *drawer, float x)
 {
-    draw_triangle(frame,
+    Drawer_draw_triangle(drawer,
         x + 0.f, 1.f,
         x + -1.f, 0.f,
         x + 1.f, 0.f
     );
-    draw_triangle(frame,
+    Drawer_draw_triangle(drawer,
         x + 0.f, -1.f,
         x + -1.f, 0.f,
         x + 1.f, 0.f
     );
-}
-
-static void draw_triangle(Frame *frame,
-    float ax, float ay,
-    float bx, float by,
-    float cx, float cy)
-{
-    float xu = frame->width_unit;
-    float yu = frame->height_unit;
-
-    glBegin(GL_TRIANGLES);
-        glVertex2f(ax * xu, ay * yu);
-        glVertex2f(bx * xu, by * yu);
-        glVertex2f(cx * xu, cy * yu);
-    glEnd();
 }
 
 static void clear(void)
