@@ -18,7 +18,6 @@ typedef struct FrameTag {
 Frame *Frame_main(void);
 void Frame_quit(Frame *);
 void Frame_draw(Frame *);
-void Frame_clear(void);
 void Frame_event_loop(Frame *);
 
 #endif

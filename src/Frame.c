@@ -37,11 +37,6 @@ void Frame_draw(Frame *self)
     SDL_GL_SwapWindow(self->window);
 }
 
-void Frame_clear(void)
-{
-    glClear(GL_COLOR_BUFFER_BIT);
-}
-
 void Frame_event_loop(Frame *self)
 {
     SDL_PollEvent(self->event);

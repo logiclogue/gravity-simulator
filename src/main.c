@@ -7,6 +7,7 @@ static void draw_triangle(
     float ax, float ay,
     float bx, float by,
     float cx, float cy);
+static void clear(void);
 
 
 int main(void)
@@ -18,7 +19,7 @@ int main(void)
     while (!drawer->is_exit) {
         draw(x);
         Frame_draw(drawer);
-        Frame_clear();
+        clear();
         Frame_event_loop(drawer);
 
         x += 0.01;
@@ -47,4 +48,9 @@ static void draw_triangle(
         glVertex2f(bx, by);
         glVertex2f(cx, cy);
     glEnd();
+}
+
+static void clear(void)
+{
+    glClear(GL_COLOR_BUFFER_BIT);
 }
