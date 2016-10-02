@@ -12,15 +12,15 @@ static void clear(void);
 
 int main(void)
 {
-    Frame *drawer = Frame_main();
+    Frame *frame = Frame_main();
 
     float x;
 
-    while (!drawer->is_exit) {
+    while (!frame->is_exit) {
         draw(x);
-        Frame_draw(drawer);
+        Frame_draw(frame);
         clear();
-        Frame_event_loop(drawer);
+        Frame_event_loop(frame);
 
         x += 0.01;
     }
