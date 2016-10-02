@@ -1,5 +1,5 @@
 #include <GL/glu.h>
-#include "Drawer.h"
+#include "Frame.h"
 
 
 static void draw(float x);
@@ -11,15 +11,15 @@ static void draw_triangle(
 
 int main(void)
 {
-    Drawer *drawer = Drawer_main();
+    Frame *drawer = Frame_main();
 
     float x;
 
     while (!drawer->is_exit) {
         draw(x);
-        Drawer_draw(drawer);
-        Drawer_clear();
-        Drawer_event_loop(drawer);
+        Frame_draw(drawer);
+        Frame_clear();
+        Frame_event_loop(drawer);
 
         x += 0.01;
     }

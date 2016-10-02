@@ -1,17 +1,17 @@
 #include <SDL2/SDL.h>
 #include <GL/glu.h>
 #include <stdio.h>
-#include "Drawer.h"
+#include "Frame.h"
 
 
 static int initGL(void);
-static int initSDL(Drawer *);
-static void resize(Drawer *, int, int);
+static int initSDL(Frame *);
+static void resize(Frame *, int, int);
 
 
-Drawer *Drawer_main(void)
+Frame *Frame_main(void)
 {
-    Drawer *self = malloc(sizeof(Drawer));
+    Frame *self = malloc(sizeof(Frame));
 
     self->width = 640;
     self->height = 480;
@@ -25,24 +25,24 @@ Drawer *Drawer_main(void)
     return self;
 }
 
-void Drawer_quit(Drawer *self)
+void Frame_quit(Frame *self)
 {
     SDL_DestroyWindow(self->window);
     SDL_GL_DeleteContext(self->context);
     SDL_Quit();
 }
 
-void Drawer_draw(Drawer *self)
+void Frame_draw(Frame *self)
 {
     SDL_GL_SwapWindow(self->window);
 }
 
-void Drawer_clear(void)
+void Frame_clear(void)
 {
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void Drawer_event_loop(Drawer *self)
+void Frame_event_loop(Frame *self)
 {
     SDL_PollEvent(self->event);
 
@@ -50,7 +50,7 @@ void Drawer_event_loop(Drawer *self)
     case SDL_WINDOWEVENT_CLOSE:
         self->is_exit = 1;
 
-        Drawer_quit(self);
+        Frame_quit(self);
 
         break;
 
@@ -65,7 +65,7 @@ void Drawer_event_loop(Drawer *self)
 }
 
 
-static int initSDL(Drawer *self)
+static int initSDL(Frame *self)
 {
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
@@ -131,7 +131,7 @@ static int initGL(void)
     return 1;
 }
 
-static void resize(Drawer *self, int width, int height)
+static void resize(Frame *self, int width, int height)
 {
     self->width = width;
     self->height = height;

@@ -4,7 +4,7 @@
 #include <SDL2/SDL.h>
 
 
-typedef struct DrawerTag {
+typedef struct FrameTag {
     int width;
     int height;
     int is_exit;
@@ -12,13 +12,13 @@ typedef struct DrawerTag {
     SDL_Window *window;
     SDL_GLContext *context;
     SDL_Event *event;
-} Drawer;
+} Frame;
 
 
-Drawer *Drawer_main(void);
-void Drawer_quit(Drawer *);
-void Drawer_draw(Drawer *);
-void Drawer_clear(void);
-void Drawer_event_loop(Drawer *);
+Frame *Frame_main(void);
+void Frame_quit(Frame *);
+void Frame_draw(Frame *);
+void Frame_clear(void);
+void Frame_event_loop(Frame *);
 
 #endif
