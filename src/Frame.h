@@ -7,6 +7,8 @@
 typedef struct FrameTag {
     int width;
     int height;
+    float width_unit;
+    float height_unit;
     int is_exit;
     char *title;
     SDL_Window *window;

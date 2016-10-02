@@ -13,8 +13,8 @@ Frame *Frame_main(void)
 {
     Frame *self = malloc(sizeof(Frame));
 
-    self->width = 640;
-    self->height = 480;
+    resize(self, 640, 480);
+
     self->is_exit = 0;
     self->title = "Gravity Simulator";
     self->event = malloc(sizeof(SDL_Event));
@@ -130,6 +130,14 @@ static void resize(Frame *self, int width, int height)
 {
     self->width = width;
     self->height = height;
+
+    if (width > height) {
+        self->width_unit = (float)height / (float)width;
+        self->height_unit = 1.f;
+    } else {
+        self->width_unit = 1.f;
+        self->height_unit = (float)width / (float)height;
+    }
 
     glViewport(0, 0, width, height);
 }
