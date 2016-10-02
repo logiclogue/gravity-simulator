@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-Wall -c
-LDFLAGS=`pkg-config --libs --cflags gl glu sdl2`
+LDFLAGS=`pkg-config --libs --cflags gl glu sdl2` -lm
 DIRBUILD=build
 DIRSRC=src
 SOURCES=$(shell ls $(DIRSRC)/*.c)
