@@ -13,6 +13,7 @@ EXECUTABLE=$(DIRBUILD)/main
 all: $(SOURCES) $(EXECUTABLE)
 
 $(EXECUTABLE):
+	mkdir -p $(DIRBUILD)
 	mv *.o $(DIRSRC)
 	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
