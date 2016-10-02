@@ -2,6 +2,7 @@
 #define _DRAWER_H_
 
 #include <SDL2/SDL.h>
+#include "Camera.h"
 
 
 typedef struct FrameTag {
@@ -14,10 +15,11 @@ typedef struct FrameTag {
     SDL_Window *window;
     SDL_GLContext *context;
     SDL_Event *event;
+    Camera *camera;
 } Frame;
 
 
-Frame *Frame_main(void);
+Frame *Frame_main(Camera *);
 void Frame_quit(Frame *);
 void Frame_draw(Frame *);
 void Frame_event_loop(Frame *);

@@ -1,5 +1,6 @@
 #include <GL/glu.h>
 #include "Frame.h"
+#include "Camera.h"
 
 
 static void draw(Frame *frame, float x);
@@ -12,7 +13,8 @@ static void clear(void);
 
 int main(void)
 {
-    Frame *frame = Frame_main();
+    Camera *camera = Camera_main();
+    Frame *frame = Frame_main(camera);
 
     float x = 0;
 

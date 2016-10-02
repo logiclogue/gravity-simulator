@@ -9,7 +9,7 @@ Camera *Camera_main(void)
 
     self->x = 0;
     self->y = 0;
-    self->zoom = 0;
+    self->zoom = 1;
     
     return self;
 }
