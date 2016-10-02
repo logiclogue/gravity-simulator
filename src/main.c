@@ -14,7 +14,7 @@ int main(void)
 {
     Frame *frame = Frame_main();
 
-    float x;
+    float x = 0;
 
     while (!frame->is_exit) {
         draw(frame, x);
@@ -22,7 +22,7 @@ int main(void)
         clear();
         Frame_event_loop(frame);
 
-        //x += 0.0001;
+        x += 0.01;
     }
 
     return 0;
