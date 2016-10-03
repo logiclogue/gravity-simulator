@@ -14,6 +14,8 @@ int main(void)
     Frame *frame = Frame_main(camera);
     Drawer *drawer = Drawer_main(camera, frame);
 
+    frame->width_unit;
+
     float x = 0;
 
     while (!frame->is_exit) {

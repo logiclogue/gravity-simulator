@@ -5,8 +5,6 @@
 #include "Frame.h"
 
 
-typedef struct FrameTag Frame;
-
 typedef struct DrawerTag {
     Camera *camera;
     Frame *frame;
@@ -20,3 +18,5 @@ void Drawer_draw_triangle(Drawer *self,
     float cx, float cy);
 
 #endif
+
+typedef struct DrawerTag Drawer;

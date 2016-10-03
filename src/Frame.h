@@ -25,3 +25,5 @@ void Frame_draw(Frame *);
 void Frame_event_loop(Frame *);
 
 #endif
+
+typedef struct FrameTag Frame;
