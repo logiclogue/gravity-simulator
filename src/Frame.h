@@ -1,5 +1,5 @@
-#ifndef _DRAWER_H_
-#define _DRAWER_H_
+#ifndef _FRAME_H_
+#define _FRAME_H_
 
 #include <SDL2/SDL.h>
 #include "Camera.h"

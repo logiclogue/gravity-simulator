@@ -1,8 +1,8 @@
 #include <GL/glu.h>
 #include <stdlib.h>
+#include "Camera.h"
 #include "Drawer.h"
 #include "Frame.h"
-#include "Camera.h"
 
 
 Drawer *Drawer_main(Camera *camera, Frame *frame)
