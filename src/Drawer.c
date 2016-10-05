@@ -23,10 +23,12 @@ void Drawer_draw_triangle(Drawer *self,
 {
     float xu = self->frame->width_unit;
     float yu = self->frame->height_unit;
+    float xo = self->camera->x;
+    float yo = self->camera->y;
 
     glBegin(GL_TRIANGLES);
-        glVertex2f(ax * xu, ay * yu);
-        glVertex2f(bx * xu, by * yu);
-        glVertex2f(cx * xu, cy * yu);
+        glVertex2f((xo + ax) * xu, (yo + ay) * yu);
+        glVertex2f((xo + bx) * xu, (yo + by) * yu);
+        glVertex2f((xo + cx) * xu, (yo + cy) * yu);
     glEnd();
 }

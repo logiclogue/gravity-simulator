@@ -17,6 +17,8 @@ int main(void)
     float x = 0;
 
     while (!frame->is_exit) {
+        camera->y = 0.2 * x;
+
         draw(drawer, x);
         Frame_draw(frame);
         clear();
