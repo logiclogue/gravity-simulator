@@ -1,7 +1,13 @@
 #ifndef _TRIANGLE_H_
 #define _TRIANGLE_H_
 
+#include "Drawer.h"
+
+
 typedef struct TriangleTag {
+    Drawer *drawer;
+    float x;
+    float y;
     float ax;
     float ay;
     float bx;
@@ -11,7 +17,7 @@ typedef struct TriangleTag {
 } Triangle;
 
 
-Triangle *Triangle_main(void);
-void Triangle_draw(Triangle *);
+Triangle *Triangle_main(Drawer *drawer);
+void Triangle_draw(Triangle *self);
 
 #endif
