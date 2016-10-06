@@ -5,7 +5,6 @@
 
 
 static void draw(Drawer *drawer, float x);
-static void clear(void);
 
 
 int main(void)
@@ -21,7 +20,7 @@ int main(void)
 
         draw(drawer, x);
         Frame_draw(frame);
-        clear();
+        Drawer_clear(drawer);
         Frame_event_loop(frame);
 
         x += 0.01;
@@ -43,9 +42,4 @@ static void draw(Drawer *drawer, float x)
         x + -1.f, 0.f,
         x + 1.f, 0.f
     );
-}
-
-static void clear(void)
-{
-    glClear(GL_COLOR_BUFFER_BIT);
 }

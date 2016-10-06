@@ -32,3 +32,8 @@ void Drawer_draw_triangle(Drawer *self,
         glVertex2f((xo + cx) * xu, (yo + cy) * yu);
     glEnd();
 }
+
+void Drawer_clear(Drawer *self)
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+}

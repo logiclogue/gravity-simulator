@@ -16,6 +16,7 @@ void Drawer_draw_triangle(Drawer *self,
     float ax, float ay,
     float bx, float by,
     float cx, float cy);
+void Drawer_clear(Drawer *self);
 
 #endif
 
