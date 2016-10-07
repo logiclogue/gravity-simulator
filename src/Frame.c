@@ -5,8 +5,8 @@
 
 
 static int initGL(void);
-static int initSDL(Frame *);
-static void resize(Frame *, int, int);
+static int initSDL(Frame *self);
+static void resize(Frame *self, int width, int height);
 
 
 Frame *Frame_main(Camera *camera)

@@ -10,6 +10,6 @@ typedef struct CameraTag {
 
 
 Camera *Camera_main(void);
-void Camera_set_zoom(Camera *, float);
+void Camera_set_zoom(Camera *self, float zoom);
 
 #endif

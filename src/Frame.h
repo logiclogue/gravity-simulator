@@ -19,10 +19,10 @@ typedef struct FrameTag {
 } Frame;
 
 
-Frame *Frame_main(Camera *);
-void Frame_quit(Frame *);
-void Frame_draw(Frame *);
-void Frame_event_loop(Frame *);
+Frame *Frame_main(Camera *camera);
+void Frame_quit(Frame *self);
+void Frame_draw(Frame *self);
+void Frame_event_loop(Frame *self);
 
 #endif
 
