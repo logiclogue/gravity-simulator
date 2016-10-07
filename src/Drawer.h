@@ -20,4 +20,4 @@ void Drawer_clear(Drawer *self);
 
 #endif
 
-typedef struct DrawerTag Drawer;
+//typedef struct DrawerTag Drawer;

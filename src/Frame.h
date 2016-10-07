@@ -26,4 +26,4 @@ void Frame_event_loop(Frame *self);
 
 #endif
 
-typedef struct FrameTag Frame;
+//typedef struct FrameTag Frame;
