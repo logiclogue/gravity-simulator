@@ -3,6 +3,7 @@
 #include "Frame.h"
 #include "Camera.h"
 #include "Triangle.h"
+#include "Circle.h"
 
 
 static void create_triangles(Triangle *top, Triangle *bottom);
@@ -15,6 +16,7 @@ int main(void)
     Drawer *drawer = Drawer_main(camera, frame);
     Triangle *triangle_top = Triangle_main(drawer);
     Triangle *triangle_bottom = Triangle_main(drawer);
+    Circle *circle = Circle_main(drawer);
 
     float x = 0;
 
@@ -26,6 +28,7 @@ int main(void)
         triangle_top->x = triangle_bottom->x = x;
         Triangle_draw(triangle_top);
         Triangle_draw(triangle_bottom);
+        Circle_draw(circle);
 
         Frame_draw(frame);
         Drawer_clear(drawer);
