@@ -20,6 +20,7 @@ void Circle_destroy(Circle *self);
 void Circle_draw(Circle *self);
 void Circle_set_x(Circle *self, float x);
 void Circle_set_y(Circle *self, float y);
+void Circle_set_radius(Circle *self, float radius);
 void Circle_update_triangles(Circle *self);
 
 #endif

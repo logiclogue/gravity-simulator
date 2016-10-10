@@ -52,6 +52,13 @@ void Circle_set_y(Circle *self, float y)
     Circle_update_triangles(self);
 }
 
+void Circle_set_radius(Circle *self, float radius)
+{
+    self->radius = radius;
+
+    Circle_update_triangles(self);
+}
+
 void Circle_draw(Circle *self)
 {
     int i;
