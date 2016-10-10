@@ -34,6 +34,8 @@ int main(void)
         Drawer_clear(drawer);
         Frame_event_loop(frame);
 
+        Circle_set_x(circle, 0.9 * -x);
+
         x += 0.01;
     }
 

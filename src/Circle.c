@@ -38,12 +38,37 @@ void Circle_destroy(Circle *self)
     free(self);
 }
 
+void Circle_set_x(Circle *self, float x)
+{
+    self->x = x;
+
+    Circle_update_triangles(self);
+}
+
+void Circle_set_y(Circle *self, float y)
+{
+    self->y = y;
+
+    Circle_update_triangles(self);
+}
+
 void Circle_draw(Circle *self)
 {
     int i;
 
     for (i = 0; i < self->triangle_count; i++) {
         Triangle_draw(self->triangles[i]);
+    }
+}
+
+void Circle_update_triangles(Circle *self)
+{
+    int i;
+    float count = self->triangle_count;
+    Triangle **triangles = self->triangles;
+
+    for (i = 0; i < count; i++) {
+        set_triangle(self, triangles[i], i);
     }
 }
 
