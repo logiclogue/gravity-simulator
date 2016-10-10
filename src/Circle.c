@@ -25,6 +25,18 @@ Circle *Circle_main(Drawer *drawer)
     return self;
 }
 
+
+void Circle_destroy(Circle *self)
+{
+    int i = 0;
+
+    for (i = 0; i < self->triangle_count; i++) {
+        Triangle_destroy(self->triangles[i]);
+    }
+
+    free(self);
+}
+
 void Circle_draw(Circle *self)
 {
     int i;

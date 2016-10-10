@@ -16,6 +16,7 @@ typedef struct CircleTag {
 
 
 Circle *Circle_main(Drawer *drawer);
+void Circle_destroy(Circle *self);
 void Circle_draw(Circle *self);
 
 #endif

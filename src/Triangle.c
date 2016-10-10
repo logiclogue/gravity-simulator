@@ -22,6 +22,11 @@ Triangle *Triangle_main(Drawer *drawer)
 }
 
 
+void Triangle_destroy(Triangle *self)
+{
+    free(self);
+}
+
 void Triangle_draw(Triangle *self)
 {
     float x = self->x;
