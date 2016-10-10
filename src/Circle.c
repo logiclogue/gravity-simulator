@@ -8,6 +8,7 @@
 
 static void create_triangles(Circle *self);
 static void set_triangle(Circle *self, Triangle *triangle, int i);
+static float translate_coords(float x, float angle, float radius);
 
 
 Circle *Circle_main(Drawer *drawer)
@@ -68,6 +69,7 @@ static void set_triangle(Circle *self, Triangle *triangle, int i)
     int count = self->triangle_count;
     float x = self->x;
     float y = self->y;
+    float radius = self->radius;
 
     float rad_b = (i / (float)count) * MATH_TAU;
     float rad_c = ((i + 1) / (float)count) * MATH_TAU;
@@ -76,8 +78,13 @@ static void set_triangle(Circle *self, Triangle *triangle, int i)
     triangle->y = y;
     triangle->ax = x;
     triangle->ay = y;
-    triangle->bx = x + cos(rad_b);
-    triangle->by = y + sin(rad_b);
-    triangle->cx = x + cos(rad_c);
-    triangle->cy = y + sin(rad_c);
+    triangle->bx = translate_coords(x, cos(rad_b), radius);
+    triangle->by = translate_coords(y, sin(rad_b), radius);
+    triangle->cx = translate_coords(x, cos(rad_c), radius);
+    triangle->cy = translate_coords(y, sin(rad_c), radius);
+}
+
+static float translate_coords(float x, float angle, float radius)
+{
+    return (x + angle) * radius;
 }
