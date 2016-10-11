@@ -9,4 +9,8 @@ typedef struct UniverseTag {
     int particle_count;
 } Universe;
 
+
+Universe *Universe_main(int particle_count);
+void Universe_destroy(Universe *self);
+
 #endif

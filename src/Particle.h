@@ -9,4 +9,8 @@ typedef struct ParticleTag {
     float radius;
 } Particle;
 
+
+Particle *Particle_main(float mass);
+void Particle_destroy(Particle *self);
+
 #endif
