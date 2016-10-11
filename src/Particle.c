@@ -13,3 +13,9 @@ Particle *Particle_main(float mass)
 
     return self;
 }
+
+
+void Particle_destroy(Particle *self)
+{
+    free(self);
+}

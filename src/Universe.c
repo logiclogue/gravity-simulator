@@ -12,3 +12,10 @@ Universe *Universe_main(int particle_count)
 
     return self;
 }
+
+
+void Universe_destroy(Universe *self)
+{
+    free(self->particles);
+    free(self);
+}
