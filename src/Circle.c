@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "Circle.h"
 #include "Triangle.h"
+#include "Coords.h"
 
 #define MATH_TAU 2 * 3.14159
 
@@ -15,9 +16,8 @@ Circle *Circle_new(Drawer *drawer)
 {
     Circle *self = malloc(sizeof(Circle));
 
+    self->coords = Coords_new();
     self->drawer = drawer;
-    self->x = 0;
-    self->y = 0;
     self->radius = 1;
     self->triangle_count = 100;
 
@@ -40,14 +40,14 @@ void Circle_destroy(Circle *self)
 
 void Circle_set_x(Circle *self, float x)
 {
-    self->x = x;
+    self->coords->x = x;
 
     Circle_update_triangles(self);
 }
 
 void Circle_set_y(Circle *self, float y)
 {
-    self->y = y;
+    self->coords->y = y;
 
     Circle_update_triangles(self);
 }
@@ -99,8 +99,8 @@ static void create_triangles(Circle *self)
 static void set_triangle(Circle *self, Triangle *triangle, int i)
 {
     int count = self->triangle_count;
-    float x = self->x;
-    float y = self->y;
+    float x = self->coords->x;
+    float y = self->coords->y;
     float radius = self->radius;
 
     float rad_b = (i / (float)count) * MATH_TAU;

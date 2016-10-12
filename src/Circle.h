@@ -3,13 +3,13 @@
 
 #include "Triangle.h"
 #include "Drawer.h"
+#include "Coords.h"
 
 
 typedef struct CircleTag {
     Triangle **triangles;
     Drawer *drawer;
-    float x;
-    float y;
+    Coords *coords;
     float radius;
     int triangle_count;
 } Circle;

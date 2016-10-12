@@ -2,12 +2,12 @@
 #define _COORDS_H_
 
 typedef struct CoordsTag {
-    int x;
-    int y;
+    float x;
+    float y;
 } Coords;
 
 
-Coords *Coords_new(int x, int y);
+Coords *Coords_new();
 void Coords_destroy(Coords *self);
 
 #endif

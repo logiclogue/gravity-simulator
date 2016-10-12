@@ -2,7 +2,7 @@
 #include "Coords.h"
 
 
-Coords *Coords_new(int x, int y)
+Coords *Coords_new()
 {
     Coords *self = malloc(sizeof(Coords));
 
