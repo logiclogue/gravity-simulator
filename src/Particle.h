@@ -1,10 +1,11 @@
 #ifndef _PARTICLE_H_
 #define _PARTICLE_H_
 
+#include "Coords.h"
+
 
 typedef struct ParticleTag {
-    float x;
-    float y;
+    Coords *coords;
     float mass;
     float radius;
 } Particle;

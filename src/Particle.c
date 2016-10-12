@@ -6,8 +6,7 @@ Particle *Particle_new(float mass)
 {
     Particle *self = malloc(sizeof(Particle));
 
-    self->x = 0;
-    self->y = 0;
+    self->coords = Coords_new();
     self->mass = mass;
     self->radius = 0;
 
