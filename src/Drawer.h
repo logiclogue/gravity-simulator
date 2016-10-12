@@ -11,7 +11,7 @@ typedef struct DrawerTag {
 } Drawer;
 
 
-Drawer *Drawer_main(Camera *camera, Frame *frame);
+Drawer *Drawer_new(Camera *camera, Frame *frame);
 void Drawer_draw_triangle(Drawer *self,
     float ax, float ay,
     float bx, float by,

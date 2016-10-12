@@ -10,7 +10,7 @@ typedef struct ParticleTag {
 } Particle;
 
 
-Particle *Particle_main(float mass);
+Particle *Particle_new(float mass);
 void Particle_destroy(Particle *self);
 
 #endif

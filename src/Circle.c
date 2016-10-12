@@ -11,7 +11,7 @@ static void set_triangle(Circle *self, Triangle *triangle, int i);
 static float translate_coords(float x, float angle, float radius);
 
 
-Circle *Circle_main(Drawer *drawer)
+Circle *Circle_new(Drawer *drawer)
 {
     Circle *self = malloc(sizeof(Circle));
 
@@ -88,7 +88,7 @@ static void create_triangles(Circle *self)
     Triangle *triangle;
 
     for (i = 0; i < count; i++) {
-        triangle = Triangle_main(self->drawer);
+        triangle = Triangle_new(self->drawer);
 
         set_triangle(self, triangle, i);
 

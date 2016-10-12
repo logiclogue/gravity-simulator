@@ -3,7 +3,7 @@
 #include "Drawer.h"
 
 
-Triangle *Triangle_main(Drawer *drawer)
+Triangle *Triangle_new(Drawer *drawer)
 {
     Triangle *self = malloc(sizeof(Triangle));
 

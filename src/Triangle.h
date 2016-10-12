@@ -17,7 +17,7 @@ typedef struct TriangleTag {
 } Triangle;
 
 
-Triangle *Triangle_main(Drawer *drawer);
+Triangle *Triangle_new(Drawer *drawer);
 void Triangle_destroy(Triangle *self);
 void Triangle_draw(Triangle *self);
 

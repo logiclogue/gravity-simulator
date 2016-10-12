@@ -2,7 +2,7 @@
 #include "Particle.h"
 
 
-Particle *Particle_main(float mass)
+Particle *Particle_new(float mass)
 {
     Particle *self = malloc(sizeof(Particle));
 

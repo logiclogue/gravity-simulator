@@ -5,7 +5,7 @@
 #include "Frame.h"
 
 
-Drawer *Drawer_main(Camera *camera, Frame *frame)
+Drawer *Drawer_new(Camera *camera, Frame *frame)
 {
     Drawer *self = malloc(sizeof(Drawer));
 

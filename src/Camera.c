@@ -3,7 +3,7 @@
 #include "Camera.h"
 
 
-Camera *Camera_main(void)
+Camera *Camera_new(void)
 {
     Camera *self = malloc(sizeof(Camera));
 

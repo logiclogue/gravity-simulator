@@ -11,12 +11,12 @@ static void create_triangles(Triangle *top, Triangle *bottom);
 
 int main(void)
 {
-    Camera *camera = Camera_main();
-    Frame *frame = Frame_main(camera);
-    Drawer *drawer = Drawer_main(camera, frame);
-    Triangle *triangle_top = Triangle_main(drawer);
-    Triangle *triangle_bottom = Triangle_main(drawer);
-    Circle *circle = Circle_main(drawer);
+    Camera *camera = Camera_new();
+    Frame *frame = Frame_new(camera);
+    Drawer *drawer = Drawer_new(camera, frame);
+    Triangle *triangle_top = Triangle_new(drawer);
+    Triangle *triangle_bottom = Triangle_new(drawer);
+    Circle *circle = Circle_new(drawer);
 
     float x = 0;
 

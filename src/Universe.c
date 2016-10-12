@@ -3,7 +3,7 @@
 #include "Particle.h"
 
 
-Universe *Universe_main(int particle_count)
+Universe *Universe_new(int particle_count)
 {
     Universe *self = malloc(sizeof(Universe));
 

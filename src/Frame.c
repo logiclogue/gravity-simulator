@@ -9,7 +9,7 @@ static int initSDL(Frame *self);
 static void resize(Frame *self, int width, int height);
 
 
-Frame *Frame_main(Camera *camera)
+Frame *Frame_new(Camera *camera)
 {
     Frame *self = malloc(sizeof(Frame));
 

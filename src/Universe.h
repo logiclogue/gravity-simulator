@@ -10,7 +10,7 @@ typedef struct UniverseTag {
 } Universe;
 
 
-Universe *Universe_main(int particle_count);
+Universe *Universe_new(int particle_count);
 void Universe_destroy(Universe *self);
 
 #endif
