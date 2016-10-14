@@ -3,11 +3,11 @@
 
 typedef struct LinkedListNodeTag {
     void *data;
-    LinkedListNode *next_node;
-    LinkedListNode *previous_node;
+    struct LinkedListNodeTag *next_node;
+    struct LinkedListNodeTag *previous_node;
 } LinkedListNode;
 
 
-LinkedListNode *LinkedListNode_new(void);
+LinkedListNode *LinkedListNode_new(void *data);
 
 #endif
