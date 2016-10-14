@@ -38,3 +38,16 @@ void LinkedList_remove(LinkedList *self, LinkedListNode *node)
 
     LinkedListNode_destroy(node);
 }
+
+LinkedListNode *LinkedList_next(LinkedList *self)
+{
+    LinkedListNode *node = self->current_node;
+
+    if (node->next_node == NULL) {
+        self->current_node = root_node;
+    } else {
+        self->current_node = node->next_node;
+    }
+
+    return node;
+}
