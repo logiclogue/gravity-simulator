@@ -5,7 +5,7 @@
 
 
 typedef struct LinkedListTag {
-    LinkedListNode *first_node;
+    LinkedListNode *root_node;
     LinkedListNode *last_node;
     LinkedListNode *current_node;
 } LinkedList;
