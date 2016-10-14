@@ -15,3 +15,9 @@ LinkedListNode *LinkedListNode_new(void *data)
 
     return node;
 }
+
+
+void LinkedListNode_destroy(LinkedListNode *self)
+{
+    free(self);
+}

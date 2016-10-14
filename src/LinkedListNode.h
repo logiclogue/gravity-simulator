@@ -9,5 +9,6 @@ typedef struct LinkedListNodeTag {
 
 
 LinkedListNode *LinkedListNode_new(void *data);
+void LinkedListNode_destroy(LinkedListNode *self);
 
 #endif
