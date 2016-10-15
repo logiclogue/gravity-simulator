@@ -2,15 +2,15 @@
 #define _UNIVERSE_H_
 
 #include "Particle.h"
+#include "LinkedList.h"
 
 
 typedef struct UniverseTag {
-    Particle **particles;
-    int particle_count;
+    LinkedList *particles;
 } Universe;
 
 
-Universe *Universe_new(int particle_count);
+Universe *Universe_new(void);
 void Universe_destroy(Universe *self);
 
 #endif

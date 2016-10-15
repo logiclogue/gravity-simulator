@@ -1,14 +1,15 @@
 #include <stdlib.h>
 #include "Universe.h"
 #include "Particle.h"
+#include "LinkedList.h"
+#include "LinkedListNode.h"
 
 
-Universe *Universe_new(int particle_count)
+Universe *Universe_new(void)
 {
     Universe *self = malloc(sizeof(Universe));
 
-    self->particle_count = particle_count;
-    self->particles = malloc(sizeof(Particle) * particle_count);
+    self->particles = LinkedList_new();
 
     return self;
 }
@@ -16,6 +17,13 @@ Universe *Universe_new(int particle_count)
 
 void Universe_destroy(Universe *self)
 {
-    free(self->particles);
+    LinkedList_destroy(self->particles);
     free(self);
+}
+
+void Universe_add(Universe *self, Particle *particle)
+{
+    LinkedListNode *node = LinkedListNode_new(particle);
+
+    LinkedList_add(self->particles, node);
 }
