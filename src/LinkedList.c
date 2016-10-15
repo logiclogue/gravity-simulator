@@ -15,6 +15,14 @@ LinkedList *LinkedList_new(void)
 }
 
 
+void LinkedList_destroy(LinkedList *self)
+{
+    while (self->current_node != NULL) {
+        LinkedList_next(self);
+        LinkedListNode_destroy(self->current_node);
+    }
+}
+
 void LinkedList_add(LinkedList *self, LinkedListNode *node)
 {
     node->previous_node = self->last_node;

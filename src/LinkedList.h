@@ -12,6 +12,7 @@ typedef struct LinkedListTag {
 
 
 LinkedList *LinkedList_new(void);
+void LinkedList_destroy(LinkedList *self);
 void LinkedList_add(LinkedList *self, LinkedListNode *node);
 void LinkedList_remove(LinkedList *self, LinkedListNode *node);
 LinkedListNode *LinkedList_next(LinkedList *self);
