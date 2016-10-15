@@ -18,8 +18,8 @@ LinkedList *LinkedList_new(void)
 void LinkedList_destroy(LinkedList *self)
 {
     while (self->current_node != NULL) {
-        LinkedList_next(self);
         LinkedListNode_destroy(self->current_node);
+        LinkedList_next(self);
     }
 }
 
