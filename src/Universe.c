@@ -27,3 +27,12 @@ void Universe_add(Universe *self, Particle *particle)
 
     LinkedList_add(self->particles, node);
 }
+
+void Universe_test(Universe *self)
+{
+    while (self->particles->current_node != NULL) {
+        LinkedList_next(self->particles);
+
+        // another loop here!
+    }
+}

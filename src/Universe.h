@@ -12,5 +12,6 @@ typedef struct UniverseTag {
 
 Universe *Universe_new(void);
 void Universe_destroy(Universe *self);
+void Universe_test(Universe *self);
 
 #endif
