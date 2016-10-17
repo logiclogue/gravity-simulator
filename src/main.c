@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "Circle.h"
 #include "Universe.h"
+#include "DrawableParticle.h"
 
 
 int main(void)
@@ -13,9 +14,11 @@ int main(void)
     Drawer *drawer = Drawer_new(camera, frame);
     Circle *circle = Circle_new(drawer);
     Universe *universe = Universe_new();
+    DrawableParticle *drawable_particle = DrawableParticle_new(drawer);
 
     float x = 0;
 
+    Universe_add(universe, drawable_particle->particle);
     Universe_destroy(universe);
 
     while (!frame->is_exit) {
