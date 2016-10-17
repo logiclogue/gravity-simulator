@@ -49,13 +49,20 @@ void LinkedList_remove(LinkedList *self, LinkedListNode *node)
 
 LinkedListNode *LinkedList_next(LinkedList *self)
 {
-    LinkedListNode *node = self->current_node;
+    self->current_node = LinkedList_next_node(self, self->current_node);
+    
+    return self->current_node;
+}
+
+LinkedListNode *LinkedList_next_node(LinkedList *self, LinkedListNode *node)
+{
+    LinkedListNode *next_node = node;
 
     if (node->next_node == NULL) {
-        self->current_node = self->root_node;
+        next_node = self->root_node;
     } else {
-        self->current_node = node->next_node;
+        next_node = node->next_node;
     }
 
-    return node;
+    return next_node;
 }
