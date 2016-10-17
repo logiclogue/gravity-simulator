@@ -30,9 +30,18 @@ void Universe_add(Universe *self, Particle *particle)
 
 void Universe_test(Universe *self)
 {
-    while (self->particles->current_node != NULL) {
-        LinkedList_next(self->particles);
+    LinkedListNode *node_a = self->particles->root_node;
+    LinkedListNode *node_b = self->particles->root_node;
 
-        // another loop here!
+    while (node_a != NULL) {
+        while (node_b != NULL) {
+            // TODO: Compare both particles here and operate gravity.
+            //node_a->data;
+            //node_b->data;
+
+            node_b = LinkedList_next_node(self->particles, node_b);
+        }
+
+        node_a = LinkedList_next_node(self->particles, node_a);
     }
 }
