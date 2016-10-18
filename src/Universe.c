@@ -34,7 +34,7 @@ void Universe_add(Universe *self, Particle *particle)
 
 void Universe_test(Universe *self)
 {
-    Universe_loop(self, (void *)test_callback, NULL);
+    Universe_loop(self, NULL, (void *)test_callback);
 }
 
 static void test_callback(Universe *self,
@@ -44,20 +44,25 @@ static void test_callback(Universe *self,
 }
 
 void Universe_loop(Universe *self,
-    void (*callback)(void *, LinkedListNode *, LinkedListNode *),
-    void (*callback_2)(void *, LinkedListNode *))
+    void (*callback)(void *, LinkedListNode *),
+    void (*compare_callback)(void *, LinkedListNode *, LinkedListNode *))
 {
     LinkedListNode *node_a = self->particles->root_node;
     LinkedListNode *node_b = self->particles->root_node;
 
     while (node_a != NULL) {
+        if (callback != NULL) {
+            callback((void *)self, node_a);
+        }
+
         while (node_b != NULL) {
             if (node_a == node_b) {
                 continue;
             }
 
-            callback((void *)self, node_a, node_b);
-            callback_2((void *)self, node_a); // !!!!
+            if (compare_callback != NULL) {
+                compare_callback((void *)self, node_a, node_b);
+            }
 
             node_b = LinkedList_next_node(self->particles, node_b);
         }

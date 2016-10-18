@@ -15,7 +15,7 @@ void Universe_destroy(Universe *self);
 void Universe_add(Universe *self, Particle *particle);
 void Universe_test(Universe *self);
 void Universe_loop(Universe *self,
-    void (*callback)(void *, LinkedListNode *, LinkedListNode *),
-    void (*callback_2)(void *, LinkedListNode *));
+    void (*callback)(void *, LinkedListNode *),
+    void (*compare_callback)(void *, LinkedListNode *, LinkedListNode *));
 
 #endif
