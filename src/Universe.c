@@ -5,6 +5,10 @@
 #include "LinkedListNode.h"
 
 
+static void test_callback(Universe *self,
+    LinkedListNode *node_a, LinkedListNode *node_b);
+
+
 Universe *Universe_new(void)
 {
     Universe *self = malloc(sizeof(Universe));
@@ -30,14 +34,28 @@ void Universe_add(Universe *self, Particle *particle)
 
 void Universe_test(Universe *self)
 {
+    Universe_loop(self, (void *)test_callback);
+}
+
+static void test_callback(Universe *self,
+    LinkedListNode *node_a, LinkedListNode *node_b)
+{
+    
+}
+
+void Universe_loop(Universe *self,
+    void (*callback)(void *, LinkedListNode *, LinkedListNode *))
+{
     LinkedListNode *node_a = self->particles->root_node;
     LinkedListNode *node_b = self->particles->root_node;
 
     while (node_a != NULL) {
         while (node_b != NULL) {
-            // TODO: Compare both particles here and operate gravity.
-            //node_a->data;
-            //node_b->data;
+            if (node_a == node_b) {
+                continue;
+            }
+
+            callback((void *)self, node_a, node_b);
 
             node_b = LinkedList_next_node(self->particles, node_b);
         }

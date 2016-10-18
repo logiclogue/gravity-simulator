@@ -6,10 +6,9 @@
 #include "LinkedList.h"
 
 
-typedef Universe DrawableUniverse;
+Universe *DrawableUniverse_new(void);
+void DrawableUniverse_destroy(Universe *self);
+void DrawableUniverse_add(Universe *self, DrawableParticle *particle);
+void DrawableUniverse_test(Universe *self);
 
-
-DrawableUniverse *DrawableUniverse_new(void);
-void DrawableUniverse_destroy(DrawableUniverse *self);
-void DrawableUniverse_add(DrawableUniverse *self, DrawableParticle *particle);
-void DrawableUniverse_test(DrawableUniverse *self);
+#endif
