@@ -24,7 +24,7 @@ void DrawableUniverse_add(Universe *self, DrawableParticle *particle)
 
 void DrawableUniverse_test(Universe *self)
 {
-    Universe_loop(self, (void *)test_callback);
+    Universe_loop(self, (void *)test_callback, NULL);
 }
 
 static void test_callback(Universe *self,
