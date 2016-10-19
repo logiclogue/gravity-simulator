@@ -1,9 +1,10 @@
 #include "DrawableUniverse.h"
 #include "Universe.h"
+#include "Circle.h"
+#include "Particle.h"
 
 
-static void test_callback(Universe *self,
-    LinkedListNode *node_a, LinkedListNode *node_b);
+static void draw_callback(Universe *self, LinkedListNode *node);
 
 
 Universe *DrawableUniverse_new(void)
@@ -24,11 +25,13 @@ void DrawableUniverse_add(Universe *self, DrawableParticle *particle)
 
 void DrawableUniverse_test(Universe *self)
 {
-    Universe_loop(self, (void *)test_callback, NULL);
+    Universe_loop(self, (void *)draw_callback, NULL);
 }
 
-static void test_callback(Universe *self,
-    LinkedListNode *node_a, LinkedListNode *node_b)
+static void draw_callback(Universe *self, LinkedListNode *node)
 {
-    
+    Circle *circle = node->data->circle;
+    Particle *particle = node->data->particle;
+
+    Circle_draw(circle);
 }
