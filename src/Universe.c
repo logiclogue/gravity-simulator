@@ -50,12 +50,12 @@ void Universe_loop(Universe *self,
     LinkedListNode *node_a = self->particles->root_node;
     LinkedListNode *node_b = self->particles->root_node;
 
-    while (node_a != NULL) {
+    do {
         if (callback != NULL) {
             callback((void *)self, node_a);
         }
 
-        while (node_b != NULL) {
+        do {
             if (node_a == node_b) {
                 continue;
             }
@@ -65,8 +65,8 @@ void Universe_loop(Universe *self,
             }
 
             node_b = LinkedList_next_node(self->particles, node_b);
-        }
+        } while (node_b->next_node != NULL);
 
         node_a = LinkedList_next_node(self->particles, node_a);
-    }
+    } while (node_a->next_node != NULL);
 }

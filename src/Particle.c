@@ -8,7 +8,6 @@ Particle *Particle_new(float mass)
 
     self->coords = Coords_new();
     self->mass = mass;
-    self->radius = 0;
 
     return self;
 }

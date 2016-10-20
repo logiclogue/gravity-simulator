@@ -1,4 +1,5 @@
 #include "DrawableUniverse.h"
+#include "DrawableParticle.h"
 #include "Universe.h"
 #include "Circle.h"
 #include "Particle.h"
@@ -30,8 +31,8 @@ void DrawableUniverse_test(Universe *self)
 
 static void draw_callback(Universe *self, LinkedListNode *node)
 {
-    Circle *circle = node->data->circle;
-    Particle *particle = node->data->particle;
+    DrawableParticle *drawable_particle = node->data;
+    Circle *circle = drawable_particle->circle;
 
     Circle_draw(circle);
 }

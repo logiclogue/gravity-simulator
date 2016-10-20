@@ -31,6 +31,10 @@ void LinkedList_add(LinkedList *self, LinkedListNode *node)
         self->last_node->next_node = node;
     }
 
+    if (self->root_node == NULL) {
+        self->root_node = node;
+    }
+
     self->last_node = node;
 }
 
