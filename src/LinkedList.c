@@ -70,3 +70,17 @@ LinkedListNode *LinkedList_next_node(LinkedList *self, LinkedListNode *node)
 
     return next_node;
 }
+
+void LinkedList_foreach(LinkedList *self, void *callback_self,
+    void (*callback)(void *, LinkedListNode *))
+{
+    LinkedListNode *node = self->particles->root_node;
+
+    while (node != NULL) {
+        if (callback != NULL) {
+            callback(callback_self, node);
+        }
+
+        node = node->next_node;
+    }
+}
