@@ -17,3 +17,25 @@ DrawableParticle *DrawableParticle_new(Drawer *drawer)
 
     return self;
 }
+
+
+void DrawableParticle_set_x(DrawableParticle *self, float x)
+{
+    self->coords->x = x;
+
+    Circle_set_x(self->circle, x);
+}
+
+void DrawableParticle_set_y(DrawableParticle *self, float y)
+{
+    self->coords->y = y;
+
+    Circle_set_y(self->circle, y);
+}
+
+void DrawableParticle_set_mass(DrawableParticle *self, float mass)
+{
+    self->particle->mass = mass;
+
+    Circle_set_radius(self->circle, mass);
+}

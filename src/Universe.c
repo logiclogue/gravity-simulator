@@ -23,8 +23,7 @@ void Universe_destroy(Universe *self)
 {
     LinkedList_destroy(self->particles);
     free(self);
-}
-
+} 
 void Universe_add(Universe *self, Particle *particle)
 {
     LinkedListNode *node = LinkedListNode_new(particle);
