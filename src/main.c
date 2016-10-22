@@ -20,10 +20,9 @@ int main(void)
     DrawableUniverse_add(universe, particle_b);
 
     while (!frame->is_exit) {
-        camera->y = 0.2 * x;
+        camera->y = 0.02 * x;
 
         DrawableParticle_set_x(particle_a, 0.2 * x);
-        DrawableParticle_set_mass(particle_a, x);
 
         DrawableUniverse_test(universe);
         Frame_draw(frame);
