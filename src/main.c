@@ -11,7 +11,6 @@ int main(void)
     Camera *camera = Camera_new();
     Frame *frame = Frame_new(camera);
     Drawer *drawer = Drawer_new(camera, frame);
-    //DrawableParticle *particle = DrawableParticle_new(drawer);
     Universe *universe = DrawableUniverse_new();
     float x = 0;
 
