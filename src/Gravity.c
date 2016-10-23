@@ -54,5 +54,5 @@ void Gravity_interact_particles(Gravity *self,
     float gravity_y = Gravity_force_y(self, particle_a, particle_b);
     
     particle_a->coords->x += gravity_x / mass;
-    particle_b->coords->y += gravity_y / mass;
+    particle_a->coords->y += gravity_y / mass;
 }

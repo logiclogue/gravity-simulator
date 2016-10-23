@@ -18,6 +18,7 @@ int main(void)
     float x = 0;
 
     DrawableParticle_set_x(particle_b, 1);
+    DrawableParticle_set_y(particle_b, 1);
 
     DrawableUniverse_add(universe, particle_a);
     DrawableUniverse_add(universe, particle_b);
