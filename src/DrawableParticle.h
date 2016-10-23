@@ -17,5 +17,6 @@ DrawableParticle *DrawableParticle_new(Drawer *drawer);
 void DrawableParticle_set_x(DrawableParticle *self, float x);
 void DrawableParticle_set_y(DrawableParticle *self, float y);
 void DrawableParticle_set_mass(DrawableParticle *self, float mass);
+void DrawableParticle_redraw(DrawableParticle *self);
 
 #endif

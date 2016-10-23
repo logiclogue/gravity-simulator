@@ -8,6 +8,8 @@ Particle *Particle_new(float mass)
 
     self->coords = Coords_new();
     self->mass = mass;
+    self->velocity_x = 0;
+    self->velocity_y = 0;
 
     return self;
 }

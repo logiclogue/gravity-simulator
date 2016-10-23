@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "DrawableParticle.h"
 #include "DrawableUniverse.h"
+#include "Gravity.h"
 
 
 int main(void)
@@ -16,13 +17,15 @@ int main(void)
     Universe *universe = DrawableUniverse_new();
     float x = 0;
 
+    DrawableParticle_set_x(particle_b, 1);
+
     DrawableUniverse_add(universe, particle_a);
     DrawableUniverse_add(universe, particle_b);
 
     while (!frame->is_exit) {
         camera->y = 0.02 * x;
 
-        DrawableParticle_set_x(particle_a, 0.2 * x);
+        //DrawableParticle_set_x(particle_a, 0.2 * x);
 
         DrawableUniverse_test(universe);
         Frame_draw(frame);

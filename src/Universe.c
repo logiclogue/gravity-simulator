@@ -3,6 +3,7 @@
 #include "Particle.h"
 #include "LinkedList.h"
 #include "LinkedListNode.h"
+#include "Gravity.h"
 
 
 static void test_callback(Universe *self,
@@ -14,6 +15,7 @@ Universe *Universe_new(void)
     Universe *self = malloc(sizeof(Universe));
 
     self->particles = LinkedList_new();
+    self->gravity = Gravity_new();
 
     return self;
 }
@@ -39,12 +41,15 @@ void Universe_test(Universe *self)
 static void test_callback(Universe *self,
     LinkedListNode *node_a, LinkedListNode *node_b)
 {
-    
+    Particle *particle_a = node_a->data;
+    Particle *particle_b = node_b->data;
+
+    Gravity_interact_particles(self->gravity, particle_a, particle_b);
 }
 
 void Universe_loop(Universe *self,
     void (*callback)(void *, LinkedListNode *),
-    void (*compare_callback)(void *, LinkedListNode *, LinkedListNode *))
+    void (*callback_compare)(void *, LinkedListNode *, LinkedListNode *))
 {
     LinkedListNode *node_a = self->particles->root_node;
     LinkedListNode *node_b = self->particles->root_node;
@@ -61,8 +66,8 @@ void Universe_loop(Universe *self,
                 continue;
             }
 
-            if (compare_callback != NULL) {
-                compare_callback((void *)self, node_a, node_b);
+            if (callback_compare != NULL) {
+                callback_compare((void *)self, node_a, node_b);
             }
 
             node_b = node_b->next_node;

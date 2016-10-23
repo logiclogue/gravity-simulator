@@ -23,14 +23,14 @@ void DrawableParticle_set_x(DrawableParticle *self, float x)
 {
     self->coords->x = x;
 
-    Circle_set_x(self->circle, x);
+    DrawableParticle_redraw(self);
 }
 
 void DrawableParticle_set_y(DrawableParticle *self, float y)
 {
     self->coords->y = y;
 
-    Circle_set_y(self->circle, y);
+    DrawableParticle_redraw(self);
 }
 
 void DrawableParticle_set_mass(DrawableParticle *self, float mass)
@@ -38,4 +38,9 @@ void DrawableParticle_set_mass(DrawableParticle *self, float mass)
     self->particle->mass = mass;
 
     Circle_set_radius(self->circle, mass);
+}
+
+void DrawableParticle_redraw(DrawableParticle *self)
+{
+    Circle_update_triangles(self->circle);
 }

@@ -8,6 +8,8 @@ typedef struct ParticleTag {
     Coords *coords;
     float mass;
     float radius;
+    float velocity_x;
+    float velocity_y;
 } Particle;
 
 

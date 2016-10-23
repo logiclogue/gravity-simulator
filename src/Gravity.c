@@ -6,7 +6,7 @@ Gravity *Gravity_new(void)
 {
     Gravity *self = malloc(sizeof(Gravity));
 
-    self->constant = 1;
+    self->constant = 0.01;
 
     return self;
 }
@@ -44,4 +44,15 @@ float Gravity_force_y(Gravity *self,
     float distance_y = b_y - a_y;
 
     return Gravity_force(self, particle_a, particle_b, distance_y);
+}
+
+void Gravity_interact_particles(Gravity *self,
+    Particle *particle_a, Particle *particle_b)
+{
+    float mass = particle_a->mass;
+    float gravity_x = Gravity_force_x(self, particle_a, particle_b);
+    float gravity_y = Gravity_force_y(self, particle_a, particle_b);
+    
+    particle_a->coords->x += gravity_x / mass;
+    particle_b->coords->y += gravity_y / mass;
 }

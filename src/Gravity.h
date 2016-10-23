@@ -16,5 +16,7 @@ float Gravity_force_x(Gravity *self,
     Particle *particle_a, Particle *particle_b);
 float Gravity_force_y(Gravity *self,
     Particle *particle_a, Particle *particle_b);
+void Gravity_interact_particles(Gravity *self,
+    Particle *particle_a, Particle *particle_b);
 
 #endif
