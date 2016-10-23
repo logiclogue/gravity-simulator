@@ -26,7 +26,7 @@ int main(void)
     while (!frame->is_exit) {
         camera->y = 0.02 * x;
 
-        Camera_set_zoom(camera, -x);
+        Camera_set_zoom(camera, -3);
         Frame_resize(frame, frame->width, frame->height);
 
         DrawableUniverse_test(universe);
