@@ -25,7 +25,8 @@ int main(void)
     while (!frame->is_exit) {
         camera->y = 0.02 * x;
 
-        //DrawableParticle_set_x(particle_a, 0.2 * x);
+        Camera_set_zoom(camera, -x);
+        Frame_resize(frame, frame->width, frame->height);
 
         DrawableUniverse_test(universe);
         Frame_draw(frame);

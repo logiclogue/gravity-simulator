@@ -23,6 +23,7 @@ Frame *Frame_new(Camera *camera);
 void Frame_quit(Frame *self);
 void Frame_draw(Frame *self);
 void Frame_event_loop(Frame *self);
+void Frame_resize(Frame *self, int width, int height);
 
 #endif
 

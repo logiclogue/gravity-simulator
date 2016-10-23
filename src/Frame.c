@@ -6,7 +6,6 @@
 
 static int initGL(void);
 static int initSDL(Frame *self);
-static void resize(Frame *self, int width, int height);
 
 
 Frame *Frame_new(Camera *camera)
@@ -18,7 +17,7 @@ Frame *Frame_new(Camera *camera)
     self->event = malloc(sizeof(SDL_Event));
     self->camera = camera;
 
-    resize(self, 640, 480);
+    Frame_resize(self, 640, 480);
     initSDL(self);
     initGL();
 
@@ -50,13 +49,33 @@ void Frame_event_loop(Frame *self)
         break;
 
     case SDL_WINDOWEVENT_RESIZED:
-        resize(self, self->event->window.data1, self->event->window.data2);
+        Frame_resize(self,
+            self->event->window.data1, self->event->window.data2);
 
         break;
 
     default:
         break;
     }
+}
+
+void Frame_resize(Frame *self, int width, int height)
+{
+    self->width = width;
+    self->height = height;
+
+    if (width > height) {
+        self->width_unit = (float)height / (float)width;
+        self->height_unit = 1.f;
+    } else {
+        self->width_unit = 1.f;
+        self->height_unit = (float)width / (float)height;
+    }
+
+    self->width_unit *= self->camera->zoom;
+    self->height_unit *= self->camera->zoom;
+
+    glViewport(0, 0, width, height);
 }
 
 
@@ -124,23 +143,4 @@ static int initGL(void)
     }
     
     return 1;
-}
-
-static void resize(Frame *self, int width, int height)
-{
-    self->width = width;
-    self->height = height;
-
-    if (width > height) {
-        self->width_unit = (float)height / (float)width;
-        self->height_unit = 1.f;
-    } else {
-        self->width_unit = 1.f;
-        self->height_unit = (float)width / (float)height;
-    }
-
-    self->width_unit *= self->camera->zoom;
-    self->height_unit *= self->camera->zoom;
-
-    glViewport(0, 0, width, height);
 }
