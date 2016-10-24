@@ -52,9 +52,11 @@ void Universe_loop(Universe *self,
     void (*callback_compare)(void *, LinkedListNode *, LinkedListNode *))
 {
     LinkedListNode *node_a = self->particles->root_node;
-    LinkedListNode *node_b = self->particles->root_node;
+    LinkedListNode *node_b;
 
     while (node_a != NULL) {
+        node_b = self->particles->root_node;
+
         if (callback != NULL) {
             callback((void *)self, node_a);
         }
@@ -65,6 +67,7 @@ void Universe_loop(Universe *self,
 
                 continue;
             }
+
 
             if (callback_compare != NULL) {
                 callback_compare((void *)self, node_a, node_b);
