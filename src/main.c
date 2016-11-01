@@ -14,14 +14,17 @@ int main(void)
     Drawer *drawer = Drawer_new(camera, frame);
     DrawableParticle *particle_a = DrawableParticle_new(drawer);
     DrawableParticle *particle_b = DrawableParticle_new(drawer);
+    DrawableParticle *particle_c = DrawableParticle_new(drawer);
     Universe *universe = DrawableUniverse_new();
     float x = 0;
 
     DrawableParticle_set_x(particle_b, 1);
     DrawableParticle_set_y(particle_b, 1);
+    DrawableParticle_set_x(particle_c, -5);
 
     DrawableUniverse_add(universe, particle_a);
     DrawableUniverse_add(universe, particle_b);
+    DrawableUniverse_add(universe, particle_c);
 
     while (!frame->is_exit) {
         camera->y = 0.02 * x;
