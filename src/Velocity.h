@@ -9,5 +9,6 @@ typedef struct VelocityTag {
 
 Velocity *Velocity_new(void);
 void Velocity_append(float *velocity_component, float change_velocity);
+float Velocity_get_resultant(Velocity *self);
 
 #endif
