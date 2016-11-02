@@ -35,6 +35,10 @@ static void test_callback(Universe *self, LinkedListNode *node)
 {
     DrawableParticle *drawable_particle = node->data;
     Circle *circle = drawable_particle->circle;
+    Particle *particle = drawable_particle->particle;
+
+    particle->coords->x += particle->velocity->x;
+    particle->coords->y += particle->velocity->y;
 
     Circle_draw(circle);
 }

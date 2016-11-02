@@ -50,9 +50,9 @@ void Gravity_interact_particles(Gravity *self,
     Particle *particle_a, Particle *particle_b)
 {
     float mass = particle_a->mass;
-    float gravity_x = Gravity_force_x(self, particle_a, particle_b);
-    float gravity_y = Gravity_force_y(self, particle_a, particle_b);
+    float force_x = Gravity_force_x(self, particle_a, particle_b);
+    float force_y = Gravity_force_y(self, particle_a, particle_b);
 
-    particle_a->coords->x += gravity_x / mass;
-    particle_a->coords->y += gravity_y / mass;
+    Velocity_append(&particle_a->velocity->x, force_x / mass);
+    Velocity_append(&particle_a->velocity->y, force_y / mass);
 }
