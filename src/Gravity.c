@@ -1,3 +1,4 @@
+#include <math.h>
 #include <stdlib.h>
 #include "Gravity.h"
 
@@ -17,7 +18,7 @@ float Gravity_force(Gravity *self,
 {
     float mass_a = particle_a->mass;
     float mass_b = particle_b->mass;
-    float distance_square = distance * abs(distance);
+    float distance_square = distance * distance;
     float force;
 
     if (distance_square == 0) {
@@ -29,14 +30,26 @@ float Gravity_force(Gravity *self,
     return force;
 }
 
+float Gravity_force_directly(Gravity *self,
+    Particle *particle_a, Particle *particle_b)
+{
+    float diff_x = particle_b->coords->x - particle_a->coords->x;
+    float diff_y = particle_b->coords->y - particle_a->coords->y;
+    float distance = sqrt((diff_x * diff_x) + (diff_y * diff_y));
+
+    return Gravity_force(self, particle_a, particle_b, distance);
+}
+
 float Gravity_force_x(Gravity *self,
     Particle *particle_a, Particle *particle_b)
 {
     float a_x = particle_a->coords->x;
     float b_x = particle_b->coords->x;
     float distance_x = b_x - a_x;
+    float force_x = Gravity_force(self, particle_a, particle_b, distance_x);
+    float force = Gravity_force_directly(self, particle_a, particle_b);
 
-    return Gravity_force(self, particle_a, particle_b, distance_x);
+    return sqrt((force * force) - (force_x * force_x));
 }
 
 float Gravity_force_y(Gravity *self,
@@ -45,8 +58,10 @@ float Gravity_force_y(Gravity *self,
     float a_y = particle_a->coords->y;
     float b_y = particle_b->coords->y;
     float distance_y = b_y - a_y;
+    float force_y = Gravity_force(self, particle_a, particle_b, distance_y);
+    float force = Gravity_force_directly(self, particle_a, particle_b);
 
-    return Gravity_force(self, particle_a, particle_b, distance_y);
+    return sqrt((force * force) - (force_y * force_y));
 }
 
 void Gravity_interact_particles(Gravity *self,
