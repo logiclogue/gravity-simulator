@@ -26,7 +26,7 @@ int main(void)
     DrawableUniverse_add(universe, particle_b);
     DrawableUniverse_add(universe, particle_c);
 
-    particle_b->particle->velocity->x = 0.001;
+    particle_b->particle->velocity->x = 0.05;
 
     while (!frame->is_exit) {
         Camera_set_zoom(camera, -5);

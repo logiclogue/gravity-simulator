@@ -7,7 +7,7 @@ Gravity *Gravity_new(void)
 {
     Gravity *self = malloc(sizeof(Gravity));
 
-    self->constant = 0.01;
+    self->constant = 0.001;
 
     return self;
 }
@@ -30,38 +30,33 @@ float Gravity_force(Gravity *self,
     return force;
 }
 
-float Gravity_force_directly(Gravity *self,
+float *Gravity_force_directly(Gravity *self,
     Particle *particle_a, Particle *particle_b)
 {
     float diff_x = particle_b->coords->x - particle_a->coords->x;
     float diff_y = particle_b->coords->y - particle_a->coords->y;
     float distance = sqrt((diff_x * diff_x) + (diff_y * diff_y));
+    float force = Gravity_force(self, particle_a, particle_b, distance);
+    float force_x = (diff_x * force) / distance;
+    float force_y = (diff_y * force) / distance;
+    static float forces[2];
 
-    return Gravity_force(self, particle_a, particle_b, distance);
+    forces[0] = force_x;
+    forces[1] = force_y;
+
+    return forces;
 }
 
 float Gravity_force_x(Gravity *self,
     Particle *particle_a, Particle *particle_b)
 {
-    float a_x = particle_a->coords->x;
-    float b_x = particle_b->coords->x;
-    float distance_x = b_x - a_x;
-    float force_x = Gravity_force(self, particle_a, particle_b, distance_x);
-    float force = Gravity_force_directly(self, particle_a, particle_b);
-
-    return sqrt((force * force) - (force_x * force_x));
+    return Gravity_force_directly(self, particle_a, particle_b)[0];
 }
 
 float Gravity_force_y(Gravity *self,
     Particle *particle_a, Particle *particle_b)
 {
-    float a_y = particle_a->coords->y;
-    float b_y = particle_b->coords->y;
-    float distance_y = b_y - a_y;
-    float force_y = Gravity_force(self, particle_a, particle_b, distance_y);
-    float force = Gravity_force_directly(self, particle_a, particle_b);
-
-    return sqrt((force * force) - (force_y * force_y));
+    return Gravity_force_directly(self, particle_a, particle_b)[1];
 }
 
 void Gravity_interact_particles(Gravity *self,
