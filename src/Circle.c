@@ -9,7 +9,7 @@
 
 static void create_triangles(Circle *self);
 static void set_triangle(Circle *self, Triangle *triangle, int i);
-static float translate_coords(float x, float angle, float radius);
+static float translate_coords(float angle, float radius);
 
 
 Circle *Circle_new(Drawer *drawer)
@@ -110,13 +110,13 @@ static void set_triangle(Circle *self, Triangle *triangle, int i)
     triangle->y = y;
     triangle->ax = 0;
     triangle->ay = 0;
-    triangle->bx = translate_coords(0, cos(rad_b), radius);
-    triangle->by = translate_coords(0, sin(rad_b), radius);
-    triangle->cx = translate_coords(0, cos(rad_c), radius);
-    triangle->cy = translate_coords(0, sin(rad_c), radius);
+    triangle->bx = translate_coords(cos(rad_b), radius);
+    triangle->by = translate_coords(sin(rad_b), radius);
+    triangle->cx = translate_coords(cos(rad_c), radius);
+    triangle->cy = translate_coords(sin(rad_c), radius);
 }
 
-static float translate_coords(float coord, float angle, float radius)
+static float translate_coords(float angle, float radius)
 {
-    return (coord + angle) * radius;
+    return angle * radius;
 }
