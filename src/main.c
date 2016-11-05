@@ -21,6 +21,7 @@ int main(void)
     DrawableParticle_set_x(particle_b, 1);
     DrawableParticle_set_y(particle_b, 1);
     DrawableParticle_set_y(particle_c, 5);
+    DrawableParticle_set_mass(particle_a, 2);
 
     DrawableUniverse_add(universe, particle_a);
     DrawableUniverse_add(universe, particle_b);

@@ -108,15 +108,15 @@ static void set_triangle(Circle *self, Triangle *triangle, int i)
     
     triangle->x = x;
     triangle->y = y;
-    triangle->ax = x;
-    triangle->ay = y;
-    triangle->bx = translate_coords(x, cos(rad_b), radius);
-    triangle->by = translate_coords(y, sin(rad_b), radius);
-    triangle->cx = translate_coords(x, cos(rad_c), radius);
-    triangle->cy = translate_coords(y, sin(rad_c), radius);
+    triangle->ax = 0;
+    triangle->ay = 0;
+    triangle->bx = translate_coords(0, cos(rad_b), radius);
+    triangle->by = translate_coords(0, sin(rad_b), radius);
+    triangle->cx = translate_coords(0, cos(rad_c), radius);
+    triangle->cy = translate_coords(0, sin(rad_c), radius);
 }
 
-static float translate_coords(float x, float angle, float radius)
+static float translate_coords(float coord, float angle, float radius)
 {
-    return (x + angle) * radius;
+    return (coord + angle) * radius;
 }
