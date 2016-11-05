@@ -47,25 +47,16 @@ float *Gravity_force_directly(Gravity *self,
     return forces;
 }
 
-float Gravity_force_x(Gravity *self,
-    Particle *particle_a, Particle *particle_b)
-{
-    return Gravity_force_directly(self, particle_a, particle_b)[0];
-}
-
-float Gravity_force_y(Gravity *self,
-    Particle *particle_a, Particle *particle_b)
-{
-    return Gravity_force_directly(self, particle_a, particle_b)[1];
-}
-
 void Gravity_interact_particles(Gravity *self,
     Particle *particle_a, Particle *particle_b)
 {
     float mass = particle_a->mass;
-    float force_x = Gravity_force_x(self, particle_a, particle_b);
-    float force_y = Gravity_force_y(self, particle_a, particle_b);
+    float *forces = Gravity_force_directly(self, particle_a, particle_b);
+    float force_x = forces[0];
+    float force_y = forces[1];
+    float delta_velocity_x = force_x / mass;
+    float delta_velocity_y = force_y / mass;
 
-    Velocity_append(&particle_a->velocity->x, force_x / mass);
-    Velocity_append(&particle_a->velocity->y, force_y / mass);
+    Velocity_append(&particle_a->velocity->x, delta_velocity_x);
+    Velocity_append(&particle_a->velocity->y, delta_velocity_y);
 }
