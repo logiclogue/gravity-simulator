@@ -16,7 +16,7 @@ int main(void)
     DrawableParticle *particle_b = DrawableParticle_new(drawer);
     DrawableParticle *particle_c = DrawableParticle_new(drawer);
     Universe *universe = DrawableUniverse_new();
-    float x = 0;
+    float zoom = -2;
 
     DrawableParticle_set_x(particle_b, 1);
     DrawableParticle_set_y(particle_b, 1);
@@ -30,7 +30,7 @@ int main(void)
     particle_b->particle->velocity->x = 0.05;
 
     while (!frame->is_exit) {
-        Camera_set_zoom(camera, -5);
+        Camera_set_zoom(camera, zoom);
         Frame_resize(frame, frame->width, frame->height);
 
         DrawableUniverse_test(universe);
@@ -38,7 +38,7 @@ int main(void)
         Drawer_clear(drawer);
         Frame_event_loop(frame);
 
-        x += 0.01;
+        zoom -= 0.0005;
     }
 
     return 0;

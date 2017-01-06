@@ -26,10 +26,29 @@ void Drawer_draw_triangle(Drawer *self,
     float xo = self->camera->x;
     float yo = self->camera->y;
 
+    float x[3] = {
+        (xo + ax) * xu,
+        (xo + bx) * xu,
+        (xo + cx) * xu
+    };
+    float y[3] = {
+        (yo + ay) * yu,
+        (yo + by) * yu,
+        (yo + cy) * yu
+    };
+
+    int i;
+
+    for (i = 0; i < 3; i++)
+    {
+        x[i] *= self->camera->zoom;
+        y[i] *= self->camera->zoom;
+    }
+
     glBegin(GL_TRIANGLES);
-        glVertex2f((xo + ax) * xu, (yo + ay) * yu);
-        glVertex2f((xo + bx) * xu, (yo + by) * yu);
-        glVertex2f((xo + cx) * xu, (yo + cy) * yu);
+        glVertex2f(x[0], y[0]);
+        glVertex2f(x[1], y[1]);
+        glVertex2f(x[2], y[2]);
     glEnd();
 }
 
