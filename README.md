@@ -21,10 +21,11 @@ cd gravity-simulator
 make
 ```
 
-To program will begin compiling. The program's compiled binary will be in the
-`build/` folder. In order to run the program, type `./build/main`. Assuming
-you're on a Unix machine. It's only been tested on Arch Linux. Modification of
-the SDL and OpenGL header paths may be required to execute on other systems.
+The program will begin compiling. Once compilation has finished, the binary will
+be in the `build/` folder. In order to run the program, type `./build/main`.
+Assuming you're on a Unix machine. It's only been tested on Arch Linux.
+Modification of the SDL and OpenGL header paths may be required to execute on
+other systems.
 
 The program currently doesn't have much functionality. To change the initial
 locations of the planets, you'll have to edit `src/main.c` and recompile.
