@@ -19,5 +19,3 @@ void Drawer_draw_triangle(Drawer *self,
 void Drawer_clear(Drawer *self);
 
 #endif
-
-//typedef struct DrawerTag Drawer;
